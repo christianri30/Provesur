@@ -1,6 +1,16 @@
+using Provesur.Repository.Interfaces.Global;
+using Provesur.Repository.Services.Global;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Configuration
+builder.Configuration.AddJsonFile("appsettings.json");
+builder.Configuration.AddEnvironmentVariables();
+
+builder.Services.AddScoped<ISocioNegocioService, SocioNegocioService>();
+builder.Services.AddScoped<IGlobalMaestroService, GlobalMaestroService>();
 // Add services to the container.
+//builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

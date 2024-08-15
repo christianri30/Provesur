@@ -1,0 +1,424 @@
+﻿@{
+    ViewBag.Title = "Crear Proveedor";
+    ViewBag.pTitle = "Crear Proveedor";
+    ViewBag.pageTitle = "Proveedores";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+
+<link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+<div class="row mt-5">
+    <div class="col-xxl-12">
+        <div class="card mt-xxl-n5">
+
+            <div class="card-header">
+                <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0"
+                    role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link text-body active" data-bs-toggle="tab" href="#socio" role="tab">
+                            <i class="fas fa-home"></i>
+                            Proveedor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-body" data-bs-toggle="tab" href="#local" role="tab">
+                            <i class="far fa-user"></i>
+                            Locales
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-body" data-bs-toggle="tab" href="#contacto" role="tab">
+                            <i class="far fa-user"></i>
+                            Contactos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-body" data-bs-toggle="tab" href="#banco" role="tab">
+                            <i class="far fa-user"></i>
+                            Cuenta Bancaria
+                        </a>
+                    </li>                   
+                </ul>
+            </div>
+            <div class="card-body p-4">
+                <div class="tab-content">
+                    @*PROVEEDOR *@
+                    <div class="tab-pane active" id="socio" role="tabpanel">
+                        <form id="formEntidad">
+                            <div class="row">
+
+                                <div class="col-lg-3">
+                                    <div class="input-group input-group-md mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Tipo de Persona</b></span>
+                                        </div>
+                                        <select class="form-control form-select validate" id="cboTipoPersona" name="TipoSocioNegocio">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Tipo Dcto.</b></span>
+                                        </div>
+                                        <select class="form-control form-select  validate" id="cboTipolocal" name="TipoDocumento">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Nro. Dcto.</b></span>
+                                        </div>
+                                        <input type="text" class="form-control validate" id="txtDocumento" name="NumeroDocumento" autocomplete="off">
+                                        <button type="button" id="btnSunat" class="btn btn-outline-primary"><i class="bx bx-search-alt-2"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <div class="input-group mb-2">
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="checkbox" name="AgenteRetencion" checked="">
+                                            <label class="form-check-label" for="formCheck2">
+                                                Agente de Retención
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Razón Social</b></span>
+                                        </div>
+                                        <input type="text" class="form-control validate" id="txtRazonSocial" name="SocioNegocioRazon" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Nombre Comercial</b></span>
+                                        </div>
+                                        <input type="text" class="form-control validate" id="diretdfis" name="NombreComercial" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-9">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Dirección Fiscal</b></span>
+                                        </div>
+                                        <input type="text" class="form-control validate" id="txtDireccion" name="Direccion" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Código Postal</b></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="ZipCodeID" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Teléfono</b></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="Telefono" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Mail</b></span>
+                                        </div>
+                                        <input type="text" class="form-control validate" name="Mail" id="txtMail" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Sitio Web</b></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="SitioWeb" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Condición de Pago</b></span>
+                                        </div>
+                                        <select class="form-control" id="cboCondicionPago" name="CondicionPagoId">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Interés de Retraso</b></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="InteresRetraso" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>Representante Legal</b></span>
+                                        </div>
+                                        <input type="text" class="form-control" name="RepresentanteLegal" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><b>F. Aniversario</b></span>
+                                        </div>
+                                        <input type="text" class="form-control flatpickr-input " data-provider="flatpickr" data-date-format="d/m/Y" id="txtFechaAniversario" name="FechaAniversario" />
+                                    </div>
+                                </div>
+                                <!--end col-->
+                                <div class="col-lg-12">
+                                    <div class="hstack gap-2 justify-content-end">
+                                        <button type="button" id="btnGrabar"
+                                                class="btn btn-dark">
+                                            Crear
+                                        </button>
+                                        <a href="/proveedor"
+                                           class="btn btn-light">
+                                            Cancelar
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
+                        </form>
+                    </div>
+                    <!--end tab-pane-->
+                    @*LOCAL *@
+                    <div class="tab-pane" id="local" role="tabpanel">
+                        <div class="row mb-2">
+                            <div class="col-lg-6">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Direccion</b></span>
+                                    </div>
+                                    <input type="text" class="form-control local vlocal" id="txtDireccion" placeholder="Direccion" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Teléfono</b></span>
+                                    </div>
+                                    <input type="text" class="form-control local vlocal" id="txtTelefono" placeholder="Tel." autocomplete="off">
+                                </div>
+                            </div>
+                            @* <div class="col-lg-3">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Cargo</b></span>
+                                    </div>
+                                    <input type="text" class="form-control contact vContact" id="txtCargo" placeholder="Cargo" autocomplete="off">
+                                </div>
+                            </div> *@
+                            <div class="col-lg-12 ">
+                                <div class="hstack gap-2 justify-content-end">
+                                    <button type="button" class="btn btn-dark" id="btnAgregarLocal"> Agregar </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive table-card" style="min-height:300px;margin:0">
+                                <table class="table table-nowrap table-sm align-middle">
+                                    <thead class="text-muted table-light">
+                                        <tr class="text-uppercase">
+                                            <th class="">Direccion</th>
+                                            <th class="">Teléfono</th>
+                                            <th class="">Principal</th>
+                                            <th class=""></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="list form-check-all" id="tbLocal">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end tab-pane-->
+                    @*CONTACTOS *@
+                    <div class="tab-pane" id="contacto" role="tabpanel">
+                        <div class="row mb-2">
+                            <div class="col-lg-6">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Nombre Completo</b></span>
+                                    </div>
+                                    <input type="text" class="form-control contact vContact" id="txtNomContacto" placeholder="Nombres" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Cargo</b></span>
+                                    </div>
+                                    <input type="text" class="form-control contact vContact" id="txtCargo" placeholder="Cargo" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Teléfono</b></span>
+                                    </div>
+                                    <input type="text" class="form-control contact vContact" id="txtTelefono" placeholder="Tel." autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Mail</b></span>
+                                    </div>
+                                    <input type="text" class="form-control contact" id="txtMailContacto" placeholder="Mail" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div class="hstack gap-2 justify-content-end">
+                                    <button type="button" class="btn btn-dark" id="btnAgregarContacto"> Agregar </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive table-card" style="min-height:300px;margin:0">
+                                <table class="table table-nowrap table-sm align-middle">
+                                    <thead class="text-muted table-light">
+                                        <tr class="text-uppercase">
+                                            <th class="">Contacto</th>
+                                            <th class="">Cargo</th>
+                                            <th class="">Teléfono</th>
+                                            <th class="">Mail</th>
+                                            <th class=""></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="list form-check-all" id="tbContactos">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end tab-pane-->
+                    @*CUENTA BANCARIA *@
+                    <div class="tab-pane" id="banco" role="tabpanel">
+                        <div class="row mb-3">
+
+                            <div class="col-lg-4">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Descripción</b></span>
+                                    </div>
+                                    <input type="text" class="form-control bank vBank" id="txtDescripcionBanco" placeholder="Descripcion Cta." autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Banco</b></span>
+                                    </div>
+                                    <select class="form-control form-select bank vBank" id="cboBanco">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Moneda</b></span>
+                                    </div>
+                                    <select class="form-control form-select bank vBank" id="cboMoneda">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Cta. Bancaria</b></span>
+                                    </div>
+                                    <input type="text" class="form-control bank vBank" id="txtCtaBancaria" placeholder="Cta. Bancaria" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Cta. Interbancaria</b></span>
+                                    </div>
+                                    <input type="text" class="form-control bank" id="txtCtaInterBancaria" placeholder="Cta. Interbancaria" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><b>Cta. Detracción</b></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="CuentaDetraccion" id="txtCtaDetraccion" placeholder="Cta. Detracción" autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="hstack gap-2 justify-content-end">
+                                    <button type="button" class="btn btn-dark" id="btnAgregarCtaBanco"> Agregar </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive table-card" style="min-height:300px;margin:0">
+                            <table class="table table-nowrap table-sm align-middle" id="">
+                                <thead class="text-muted table-light">
+                                    <tr class="text-uppercase">
+                                        <th class="">Descripción</th>
+                                        <th class="">Banco</th>
+                                        <td class="">Moneda</td>
+                                        <th class="">CTA. BANCARIA</th>
+                                        <th class="">CTA. INTERBANCARIA</th>
+                                        <th class="">CTA. DETRACCIÓN</th>
+                                        <th class=""></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list form-check-all" id="tbBanks">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--end tab-pane-->
+                                 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end col-->
+</div>
+<!--end row-->
+
+<script src="~/assets/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="~/assets/libs/list.js/list.min.js"></script>
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+<script src="~/assets/js/scripts.js"></script>
+<script src="~/scripts/proveedor/crear.js"></script>
+<script src="~/assets/js/app.js"></script>
+
